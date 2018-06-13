@@ -5,6 +5,10 @@ const cluster = require('cluster');
 const http = require('http');
 const numCPUs = require('os').cpus().length;
 
+//
+var fs = require('fs')
+var morgan = require('morgan')
+var path = require('path')
 
 
 if (cluster.isMaster) {
@@ -26,6 +30,11 @@ if (cluster.isMaster) {
 
  } else {
 
+// create a write stream (in append mode)
+var accessLogStream = fs.createWriteStream(path.join(__dirname, './log/access.log'), {flags: 'a'})
+
+// setup the logger
+app.use(morgan('combined', {stream: accessLogStream}))
 
 
 
