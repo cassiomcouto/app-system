@@ -34,7 +34,7 @@ if (cluster.isMaster) {
 var accessLogStream = fs.createWriteStream(path.join(__dirname, './log/access.log'), {flags: 'a'})
 
 // setup the logger
-app.use(morgan('combined', {stream: accessLogStream}))
+app.use(morgan('dev', {stream: accessLogStream}))
 
 
 
