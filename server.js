@@ -31,7 +31,7 @@ if (cluster.isMaster) {
  } else {
 
 // create a write stream (in append mode)
-var accessLogStream = fs.createWriteStream(path.join(__dirname, './log/access.log'), {flags: 'a'})
+var accessLogStream = fs.createWriteStream(path.join(__dirname, '../log/access.log'), {flags: 'a'})
 
 // setup the logger
 app.use(morgan('combined', {stream: accessLogStream}))
